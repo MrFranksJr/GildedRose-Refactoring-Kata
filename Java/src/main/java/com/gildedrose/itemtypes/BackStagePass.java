@@ -6,8 +6,6 @@ import com.gildedrose.StockItem;
 public class BackStagePass implements StockItem {
     public static final String NAME = "Backstage passes to a TAFKAL80ETC concert";
     private final Item item;
-    private static final int maxQuality = 50;
-    private static final int minQuality = 0;
 
     public BackStagePass(Item item) {
         this.item = item;
@@ -28,11 +26,11 @@ public class BackStagePass implements StockItem {
     public void updateQuality() {
         increaseQuality();
 
-        if (item.sellIn < 11 && item.quality < maxQuality) {
+        if (item.sellIn < 11) {
             increaseQuality();
         }
 
-        if (item.sellIn < 6 && item.quality < maxQuality) {
+        if (item.sellIn < 6) {
             increaseQuality();
         }
     }

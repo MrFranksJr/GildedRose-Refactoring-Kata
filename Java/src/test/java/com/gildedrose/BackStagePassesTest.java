@@ -53,7 +53,7 @@ public class BackStagePassesTest {
 
     @Test
     void quality_never_goes_above_50() {
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50)};
+        final Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50)};
         app = new GildedRose(items);
 
         app.updateQuality();

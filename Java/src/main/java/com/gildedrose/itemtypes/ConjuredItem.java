@@ -5,7 +5,6 @@ import com.gildedrose.StockItem;
 
 public class ConjuredItem implements StockItem {
     public static final String NAME = "Conjured";
-    private static final int minQuality = 0;
     private final Item item;
 
     public ConjuredItem(Item item) {

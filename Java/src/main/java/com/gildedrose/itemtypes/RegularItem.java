@@ -4,8 +4,6 @@ import com.gildedrose.Item;
 import com.gildedrose.StockItem;
 
 public class RegularItem implements StockItem {
-    private static final int minQuality = 0;
-    private static final int maxQuality = 50;
     private final Item item;
 
     public RegularItem(Item item) {
@@ -15,9 +13,7 @@ public class RegularItem implements StockItem {
     @Override
     public void updateQualityAndSellIn() {
         updateQuality();
-
         updateSellIn();
-
         if (isExpired()) {
             updateExpiredItems();
         }
