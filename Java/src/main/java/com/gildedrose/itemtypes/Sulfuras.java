@@ -1,9 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.itemtypes;
 
-public class AgedBrie implements InventoryItem {
+import com.gildedrose.Item;
+import com.gildedrose.StockItem;
+
+public class Sulfuras implements StockItem {
     private final Item item;
 
-    public AgedBrie(Item item) {
+    public Sulfuras(Item item) {
         this.item = item;
     }
 
@@ -20,18 +23,14 @@ public class AgedBrie implements InventoryItem {
 
     @Override
     public void updateQuality() {
-        increaseQuality();
     }
 
     @Override
     public void updateSellIn() {
-        item.sellIn--;
     }
 
     @Override
-    public void updateExpiredItems() {
-        increaseQuality();
-    }
+    public void updateExpiredItems() { }
 
     @Override
     public void increaseQuality() {

@@ -1,6 +1,9 @@
-package com.gildedrose;
+package com.gildedrose.itemtypes;
 
-public class BackStagePass implements InventoryItem {
+import com.gildedrose.Item;
+import com.gildedrose.StockItem;
+
+public class BackStagePass implements StockItem {
     private final Item item;
 
     public BackStagePass(Item item) {

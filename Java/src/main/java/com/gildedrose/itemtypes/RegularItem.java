@@ -1,9 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.itemtypes;
 
-public class Sulfuras implements InventoryItem {
+import com.gildedrose.Item;
+import com.gildedrose.StockItem;
+
+public class RegularItem implements StockItem {
     private final Item item;
 
-    public Sulfuras(Item item) {
+    public RegularItem(Item item) {
         this.item = item;
     }
 
@@ -20,14 +23,18 @@ public class Sulfuras implements InventoryItem {
 
     @Override
     public void updateQuality() {
+        decreaseQuality();
     }
 
     @Override
     public void updateSellIn() {
+        item.sellIn--;
     }
 
     @Override
-    public void updateExpiredItems() { }
+    public void updateExpiredItems() {
+        decreaseQuality();
+    }
 
     @Override
     public void increaseQuality() {
@@ -38,7 +45,9 @@ public class Sulfuras implements InventoryItem {
 
     @Override
     public void decreaseQuality() {
-
+        if (item.quality > 0) {
+            item.quality--;
+        }
     }
 
     private boolean isExpired() {

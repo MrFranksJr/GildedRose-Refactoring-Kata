@@ -1,9 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.itemtypes;
 
-public class RegularItem implements InventoryItem {
+import com.gildedrose.Item;
+import com.gildedrose.StockItem;
+
+public class AgedBrie implements StockItem {
     private final Item item;
 
-    public RegularItem(Item item) {
+    public AgedBrie(Item item) {
         this.item = item;
     }
 
@@ -20,7 +23,7 @@ public class RegularItem implements InventoryItem {
 
     @Override
     public void updateQuality() {
-        decreaseQuality();
+        increaseQuality();
     }
 
     @Override
@@ -30,7 +33,7 @@ public class RegularItem implements InventoryItem {
 
     @Override
     public void updateExpiredItems() {
-        decreaseQuality();
+        increaseQuality();
     }
 
     @Override
@@ -42,9 +45,7 @@ public class RegularItem implements InventoryItem {
 
     @Override
     public void decreaseQuality() {
-        if (item.quality > 0) {
-            item.quality--;
-        }
+
     }
 
     private boolean isExpired() {

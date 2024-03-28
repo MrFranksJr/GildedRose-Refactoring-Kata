@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public interface InventoryItem {
+public interface StockItem {
 
     void updateQualityAndExpiry();
 
