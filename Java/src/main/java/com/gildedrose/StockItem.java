@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public interface StockItem {
 
-    void updateQualityAndExpiry();
+    void updateQualityAndSellIn();
 
     void updateQuality();
 

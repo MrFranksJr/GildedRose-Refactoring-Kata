@@ -6,47 +6,39 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class QualityOfAgedBrieTest {
+public class AgedBrieTest {
     GildedRose app;
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
-    void qualityIncreasesWhenGettingOlder() {
+    void quality_increased_when_item_gets_older() {
         final Item[] items = new Item[] {new Item("Aged Brie", 20, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Aged Brie", app.items[0].name);
         assertEquals(19, app.items[0].sellIn);
         assertEquals(11, app.items[0].quality);
     }
     @Test
-    void qualityNeverExceeds50() {
+    void quality_never_exceeds_50() {
         final Item[] items = new Item[] {new Item("Aged Brie", 20, 50) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Aged Brie", app.items[0].name);
         assertEquals(19, app.items[0].sellIn);
         assertEquals(50, app.items[0].quality);
     }
 
-    //TODO: fix this bug
+    //TODO: fix this bug?
     @Test
     @Disabled
-    void qualityDoesNotIncreaseBy2PastSellInDate() {
+    void quality_does_not_increase_by_two_passed_sellIn_date() {
         final Item[] items = new Item[] {new Item("Aged Brie", 0, 30) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Aged Brie", app.items[0].name);
         assertEquals(-1, app.items[0].sellIn);
         assertEquals(31, app.items[0].quality);
     }

@@ -5,17 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class QualityOfNormalItemsTest {
+public class RegularItemTest {
     GildedRose app;
-
-    @BeforeEach
-    void setUp() {
-
-    }
 
     @Test
     void quality_decreases_with_1_every_day() {
-        Item[] items = new Item[] {new Item("normalItem", 20, 10) };
+        final Item[] items = new Item[] {new Item("normalItem", 20, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -27,7 +22,7 @@ class QualityOfNormalItemsTest {
 
     @Test
     void quality_decreases_with_2_when_past_sell_by_date() {
-        Item[] items = new Item[] {new Item("normalItem", 0, 10) };
+        final Item[] items = new Item[] {new Item("normalItem", 0, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -39,7 +34,7 @@ class QualityOfNormalItemsTest {
 
     @Test
     void quality_never_goes_below_0() {
-        Item[] items = new Item[] {new Item("normalItem", 10, 0) };
+        final Item[] items = new Item[] {new Item("normalItem", 10, 0) };
         app = new GildedRose(items);
 
         app.updateQuality();

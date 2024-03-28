@@ -3,21 +3,19 @@ package com.gildedrose.itemtypes;
 import com.gildedrose.Item;
 import com.gildedrose.StockItem;
 
-public class RegularItem implements StockItem {
+public class ConjuredItem implements StockItem {
+    public static final String NAME = "Conjured";
     private static final int minQuality = 0;
-    private static final int maxQuality = 50;
     private final Item item;
 
-    public RegularItem(Item item) {
+    public ConjuredItem(Item item) {
         this.item = item;
     }
 
     @Override
     public void updateQualityAndSellIn() {
         updateQuality();
-
         updateSellIn();
-
         if (isExpired()) {
             updateExpiredItems();
         }
@@ -40,15 +38,14 @@ public class RegularItem implements StockItem {
 
     @Override
     public void increaseQuality() {
-        if (item.quality < maxQuality) {
-            item.quality++;
-        }
     }
 
     @Override
     public void decreaseQuality() {
-        if (item.quality > minQuality) {
-            item.quality--;
+        for (int i = 0; i < 2; i++) {
+            if (item.quality > minQuality) {
+                item.quality--;
+            }
         }
     }
 

@@ -7,64 +7,53 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BackStagePassesTest {
     GildedRose app;
-
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
-    void qualityIncreasesAsSellInApproaches() {
-        Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 20, 10) };
+    void quality_increases_by_1_as_concert_date_approaches() {
+        final Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 20, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(19, app.items[0].sellIn);
         assertEquals(11, app.items[0].quality);
     }
     @Test
-    void qualityIncreasesBy2WhenSellinIsLessThan11Days() {
-        Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10) };
+    void quality_increases_by_2_when_sellIn_is_10_or_less_days() {
+        final Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(9, app.items[0].sellIn);
         assertEquals(12, app.items[0].quality);
     }
     @Test
-    void qualityIncreasesBy3WhenSellinIsLessThan6Days() {
-        Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10) };
+    void quality_increases_by_3_when_sellin_is_5_or_less_days() {
+        final Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(4, app.items[0].sellIn);
         assertEquals(13, app.items[0].quality);
     }
     @Test
-    void qualityDropsTo0AfterSellinDate() {
-        Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10) };
+    void quality_drops_to_0_after_sellIn_date() {
+        final Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(-1, app.items[0].sellIn);
         assertEquals(0, app.items[0].quality);
     }
     @Test
-    void qualityNeverGoesAbove50() {
+    void quality_never_goes_above_50() {
         Item[] items = new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50) };
         app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(2, app.items[0].sellIn);
         assertEquals(50, app.items[0].quality);
     }
