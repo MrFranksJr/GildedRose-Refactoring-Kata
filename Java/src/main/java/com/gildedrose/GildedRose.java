@@ -12,25 +12,30 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item.name.equals(AGED_BRIE)) {
-                InventoryItem agedBrie = new AgedBrie(item);
-                agedBrie.updateQualityAndExpiry();
-            } else if (item.name.equals(BACKSTAGE_PASS)) {
-                InventoryItem backStagePass = new BackStagePass(item);
-                backStagePass.updateQualityAndExpiry();
-            } else if (item.name.equals(SULFURAS)) {
-                InventoryItem sulfuras = new Sulfuras(item);
-                sulfuras.updateQualityAndExpiry();
-            } else {
-                InventoryItem regularItem = new RegularItem(item);
-                regularItem.updateQualityAndExpiry();
+            switch (item.name) {
+                case AGED_BRIE -> {
+                    InventoryItem agedBrie = new AgedBrie(item);
+                    agedBrie.updateQualityAndExpiry();
+                }
+                case BACKSTAGE_PASS -> {
+                    InventoryItem backStagePass = new BackStagePass(item);
+                    backStagePass.updateQualityAndExpiry();
+                }
+                case SULFURAS -> {
+                    InventoryItem sulfuras = new Sulfuras(item);
+                    sulfuras.updateQualityAndExpiry();
+                }
+                default -> {
+                    InventoryItem regularItem = new RegularItem(item);
+                    regularItem.updateQualityAndExpiry();
+                }
             }
 
-            updateItem(item);
+            updateQualityAndExpiry(item);
         }
     }
 
-    private static void updateItem(Item item) {
+    private static void updateQualityAndExpiry(Item item) {
         updateQuality(item);
 
         updateSellIn(item);
