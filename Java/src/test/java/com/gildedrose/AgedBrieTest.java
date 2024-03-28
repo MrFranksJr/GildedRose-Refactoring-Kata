@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ public class AgedBrieTest {
 
     @Test
     void quality_increased_when_item_gets_older() {
-        final Item[] items = new Item[] {new Item("Aged Brie", 20, 10) };
+        final Item[] items = new Item[]{new Item("Aged Brie", 20, 10)};
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -19,9 +18,10 @@ public class AgedBrieTest {
         assertEquals(19, app.items[0].sellIn);
         assertEquals(11, app.items[0].quality);
     }
+
     @Test
     void quality_never_exceeds_50() {
-        final Item[] items = new Item[] {new Item("Aged Brie", 20, 50) };
+        final Item[] items = new Item[]{new Item("Aged Brie", 20, 50)};
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -34,7 +34,7 @@ public class AgedBrieTest {
     @Test
     @Disabled
     void quality_does_not_increase_by_two_passed_sellIn_date() {
-        final Item[] items = new Item[] {new Item("Aged Brie", 0, 30) };
+        final Item[] items = new Item[]{new Item("Aged Brie", 0, 30)};
         app = new GildedRose(items);
 
         app.updateQuality();

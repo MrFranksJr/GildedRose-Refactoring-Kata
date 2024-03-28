@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +9,7 @@ public class SulfurasTest {
 
     @Test
     void quality_and_sellin_date_never_change() {
-        Item[] items = new Item[] {new Item("Sulfuras, Hand of Ragnaros", 20, 80) };
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 20, 80)};
         app = new GildedRose(items);
 
         app.updateQuality();
