@@ -25,12 +25,12 @@ public class RegularItem implements InventoryItem {
 
     @Override
     public void updateSellIn() {
-
+        item.sellIn--;
     }
 
     @Override
     public void updateExpiredItems() {
-
+        decreaseQuality();
     }
 
     @Override

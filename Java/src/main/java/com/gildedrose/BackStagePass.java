@@ -2,6 +2,7 @@ package com.gildedrose;
 
 public class BackStagePass implements InventoryItem {
     private final Item item;
+
     public BackStagePass(Item item) {
         this.item = item;
     }
@@ -32,12 +33,16 @@ public class BackStagePass implements InventoryItem {
 
     @Override
     public void updateSellIn() {
-
+        item.sellIn--;
     }
 
     @Override
     public void updateExpiredItems() {
+        setQualityTo0();
+    }
 
+    private void setQualityTo0() {
+        item.quality = 0;
     }
 
     @Override

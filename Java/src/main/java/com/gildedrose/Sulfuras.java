@@ -2,6 +2,7 @@ package com.gildedrose;
 
 public class Sulfuras implements InventoryItem {
     private final Item item;
+
     public Sulfuras(Item item) {
         this.item = item;
     }
@@ -18,17 +19,15 @@ public class Sulfuras implements InventoryItem {
     }
 
     @Override
-    public void updateQuality() { }
+    public void updateQuality() {
+    }
 
     @Override
     public void updateSellIn() {
-
     }
 
     @Override
-    public void updateExpiredItems() {
-
-    }
+    public void updateExpiredItems() { }
 
     @Override
     public void increaseQuality() {
