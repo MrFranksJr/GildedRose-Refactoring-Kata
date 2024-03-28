@@ -16,7 +16,7 @@ public class QualityOfAgedBrieTest {
 
     @Test
     void qualityIncreasesWhenGettingOlder() {
-        Item[] items = new Item[] {new Item("Aged Brie", 20, 10) };
+        final Item[] items = new Item[] {new Item("Aged Brie", 20, 10) };
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -27,7 +27,7 @@ public class QualityOfAgedBrieTest {
     }
     @Test
     void qualityNeverExceeds50() {
-        Item[] items = new Item[] {new Item("Aged Brie", 20, 50) };
+        final Item[] items = new Item[] {new Item("Aged Brie", 20, 50) };
         app = new GildedRose(items);
 
         app.updateQuality();
@@ -41,7 +41,7 @@ public class QualityOfAgedBrieTest {
     @Test
     @Disabled
     void qualityDoesNotIncreaseBy2PastSellInDate() {
-        Item[] items = new Item[] {new Item("Aged Brie", 0, 30) };
+        final Item[] items = new Item[] {new Item("Aged Brie", 0, 30) };
         app = new GildedRose(items);
 
         app.updateQuality();

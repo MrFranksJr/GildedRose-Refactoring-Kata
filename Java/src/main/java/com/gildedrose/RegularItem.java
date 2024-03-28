@@ -7,33 +7,47 @@ public class RegularItem implements InventoryItem {
         this.item = item;
     }
 
-    private static boolean isExpired(Item item) {
-        return item.sellIn < 0;
-    }
-
     @Override
     public void updateQualityAndExpiry() {
-        updateQuality(item);
+        updateQuality();
 
-        updateSellIn(item);
+        updateSellIn();
 
-        if (isExpired(item)) {
-            updateExpiredItems(item);
+        if (isExpired()) {
+            updateExpiredItems();
         }
     }
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality() {
+        decreaseQuality();
+    }
+
+    @Override
+    public void updateSellIn() {
 
     }
 
     @Override
-    public void updateSellIn(Item item) {
+    public void updateExpiredItems() {
 
     }
 
     @Override
-    public void updateExpiredItems(Item item) {
+    public void increaseQuality() {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
 
+    @Override
+    public void decreaseQuality() {
+        if (item.quality > 0) {
+            item.quality--;
+        }
+    }
+
+    private boolean isExpired() {
+        return item.sellIn < 0;
     }
 }

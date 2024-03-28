@@ -8,30 +8,51 @@ public class BackStagePass implements InventoryItem {
 
     @Override
     public void updateQualityAndExpiry() {
-        updateQuality(item);
+        updateQuality();
 
-        updateSellIn(item);
+        updateSellIn();
 
-        if (isExpired(item)) {
-            updateExpiredItems(item);
+        if (isExpired()) {
+            updateExpiredItems();
         }
     }
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality() {
+        increaseQuality();
+
+        if (item.sellIn < 11 && item.quality < 50) {
+            increaseQuality();
+        }
+
+        if (item.sellIn < 6 && item.quality < 50) {
+            increaseQuality();
+        }
+    }
+
+    @Override
+    public void updateSellIn() {
 
     }
 
     @Override
-    public void updateSellIn(Item item) {
+    public void updateExpiredItems() {
 
     }
 
     @Override
-    public void updateExpiredItems(Item item) {
+    public void increaseQuality() {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
+
+    @Override
+    public void decreaseQuality() {
 
     }
-    private static boolean isExpired(Item item) {
+
+    private boolean isExpired() {
         return item.sellIn < 0;
     }
 }
