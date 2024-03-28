@@ -1,69 +1,84 @@
 package com.gildedrose;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class GildedRose {
     Item[] items;
-    private final List<Item> itemList;
 
     public GildedRose(Item[] items) {
         this.items = items;
-        itemList = new ArrayList<>();
-        itemList.addAll(List.of(items));
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            ItemType itemType = ItemType.determineItemType(item.name);
+            updateItem(item);
+        }
+    }
 
-            if (itemType != ItemType.AGED_BRIE && itemType != ItemType.BACKSTAGE_PASS) {
-                if (item.quality > 0) {
-                    if (itemType != ItemType.SULFURAS) {
-                        item.quality--;
-                    }
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality++;
+    private static void updateItem(Item item) {
+        updateQuality(item);
 
-                    if (itemType == ItemType.BACKSTAGE_PASS) {
-                        updateBackStagePassesQuality(item);
-                    }
-                }
-            }
+        updateSellIn(item);
 
-            if (itemType != ItemType.SULFURAS) {
-                item.sellIn--;
-            }
+        if (isExpired(item)) {
+            updateExpiredItems(item);
+        }
+    }
 
-            if (item.sellIn < 0) {
-                if (itemType != ItemType.AGED_BRIE) {
-                    if (itemType != ItemType.BACKSTAGE_PASS) {
-                        if (item.quality > 0) {
-                            if (itemType != ItemType.SULFURAS) {
-                                item.quality--;
-                            }
-                        }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
-                    if (item.quality < 50) {
-                        item.quality++;
-                    }
-                }
+    private static void updateExpiredItems(Item item) {
+        if (item.name.equals("Aged Brie")) {
+            increaseQuality(item);
+        }
+        else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                item.quality = 0;
+        }
+        else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
+        }
+        else {
+            if (item.quality > 0) {
+                item.quality--;
             }
         }
     }
 
-    private static void updateBackStagePassesQuality(Item item) {
-        if (item.sellIn < 11 && item.quality < 50) {
-                item.quality++;
-        }
 
-        if (item.sellIn < 6 && item.quality < 50) {
-                item.quality++;
+    private static void updateSellIn(Item item) {
+        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
         }
+        item.sellIn--;
+    }
+
+
+    private static void updateQuality(Item item) {
+        if (item.name.equals("Aged Brie")) {
+            increaseQuality(item);
+        }
+        else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            increaseQuality(item);
+
+            if (item.sellIn < 11 && item.quality < 50) {
+                    item.quality++;
+            }
+
+            if (item.sellIn < 6 && item.quality < 50) {
+                    item.quality++;
+            }
+        }
+        else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
+        }
+        else if (item.quality > 0) {
+                    item.quality--;
+        }
+    }
+
+    private static void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
+
+    private static boolean isExpired(Item item) {
+        return item.sellIn < 0;
     }
 }
