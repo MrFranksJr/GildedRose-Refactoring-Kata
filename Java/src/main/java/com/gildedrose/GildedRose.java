@@ -17,22 +17,16 @@ class GildedRose {
 
     private static void updateItemsInStock(Item item) {
         StockItem stockItem;
-        switch (item.name) {
-            case AgedBrie.NAME -> {
-                stockItem = new AgedBrie(item);
-            }
-            case BackStagePass.NAME -> {
-                stockItem = new BackStagePass(item);
-            }
-            case Sulfuras.NAME -> {
-                stockItem = new Sulfuras(item);
-            }
-            case ConjuredItem.NAME -> {
-                stockItem = new ConjuredItem(item);
-            }
-            default -> {
-                stockItem = new RegularItem(item);
-            }
+        if (item.name.equals(AgedBrie.NAME)) {
+            stockItem = new AgedBrie(item);
+        } else if (item.name.equals(BackStagePass.NAME)) {
+            stockItem = new BackStagePass(item);
+        } else if (item.name.equals(Sulfuras.NAME)) {
+            stockItem = new Sulfuras(item);
+        } else if (item.name.startsWith(ConjuredItem.NAME)) {
+            stockItem = new ConjuredItem(item);
+        } else {
+            stockItem = new RegularItem(item);
         }
         stockItem.updateQualityAndSellIn();
     }

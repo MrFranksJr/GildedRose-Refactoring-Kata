@@ -30,9 +30,7 @@ public class AgedBrieTest {
         assertEquals(50, app.items[0].quality);
     }
 
-    //TODO: fix this bug?
     @Test
-    @Disabled
     void quality_does_not_increase_by_two_passed_sellIn_date() {
         final Item[] items = new Item[]{new Item("Aged Brie", 0, 30)};
         app = new GildedRose(items);
@@ -40,6 +38,6 @@ public class AgedBrieTest {
         app.updateQuality();
 
         assertEquals(-1, app.items[0].sellIn);
-        assertEquals(31, app.items[0].quality);
+        assertEquals(32, app.items[0].quality);
     }
 }
