@@ -5,6 +5,8 @@ import com.gildedrose.StockItem;
 
 public class RegularItem implements StockItem {
     private final Item item;
+    private final int minQuality = 0;
+    private final int maxQuality = 50;
 
     public RegularItem(Item item) {
         this.item = item;
@@ -34,14 +36,12 @@ public class RegularItem implements StockItem {
         decreaseQuality();
     }
 
-    @Override
     public void increaseQuality() {
         if (item.quality < maxQuality) {
             item.quality++;
         }
     }
 
-    @Override
     public void decreaseQuality() {
         if (item.quality > minQuality) {
             item.quality--;

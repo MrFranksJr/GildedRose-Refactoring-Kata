@@ -6,6 +6,7 @@ import com.gildedrose.StockItem;
 public class AgedBrie implements StockItem {
     public static final String NAME = "Aged Brie";
     private final Item item;
+    private final int maxQuality = 50;
 
     public AgedBrie(Item item) {
         this.item = item;
@@ -35,15 +36,10 @@ public class AgedBrie implements StockItem {
         increaseQuality();
     }
 
-    @Override
     public void increaseQuality() {
         if (item.quality < maxQuality) {
             item.quality++;
         }
-    }
-
-    @Override
-    public void decreaseQuality() {
     }
 
     private boolean isExpired() {

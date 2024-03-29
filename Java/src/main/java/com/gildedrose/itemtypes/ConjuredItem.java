@@ -6,6 +6,7 @@ import com.gildedrose.StockItem;
 public class ConjuredItem implements StockItem {
     public static final String NAME = "Conjured";
     private final Item item;
+    private final int minQuality = 0;
 
     public ConjuredItem(Item item) {
         this.item = item;
@@ -35,11 +36,6 @@ public class ConjuredItem implements StockItem {
         decreaseQuality();
     }
 
-    @Override
-    public void increaseQuality() {
-    }
-
-    @Override
     public void decreaseQuality() {
         for (int i = 0; i < 2; i++) {
             if (item.quality > minQuality) {

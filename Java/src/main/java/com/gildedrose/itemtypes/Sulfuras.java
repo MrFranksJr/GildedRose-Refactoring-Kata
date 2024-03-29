@@ -25,14 +25,4 @@ public class Sulfuras implements StockItem {
     @Override
     public void updateExpiredItems() {
     }
-
-    @Override
-    public void increaseQuality() {
-
-    }
-
-    @Override
-    public void decreaseQuality() {
-
-    }
 }
